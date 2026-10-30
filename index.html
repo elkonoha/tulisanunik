@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Teks Sulap Pro ✨ — Studio Tipografi & Gaya Huruf</title>
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Segoe UI', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .magic-gradient-text {
+            background: linear-gradient(135deg, #f43f5e 0%, #a855f7 50%, #f59e0b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-2px);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.4);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(233, 69, 96, 0.5);
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(233, 69, 96, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-rose-500 selection:text-white">
+
+    <!-- Top Navigation / Header -->
+    <header class="sticky top-0 z-30 backdrop-blur-md bg-slate-900/80 border-b border-slate-800 transition-colors" id="mainHeader">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 py-3.5 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 via-purple-600 to-amber-500 flex items-center justify-center shadow-lg shadow-rose-500/20 text-xl">
+                    🪄
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-extrabold tracking-tight flex items-center gap-2">
+                        <span class="magic-gradient-text">Generator Teks Sulap</span>
+                        <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/30">PRO 30+ Gaya</span>
+                    </h1>
+                    <p class="text-xs text-slate-400 hidden sm:block">Kreasi huruf unik untuk semua kalangan: Sosmed, Gamer, Pelajar & Kreator</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-2">
+                <!-- Favorites Counter Button -->
+                <button id="btnFilterFavTop" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium bg-slate-800 hover:bg-slate-700 text-amber-400 border border-slate-700 transition">
+                    <span>⭐ Favorit</span>
+                    <span id="favCountBadge" class="px-1.5 py-0.5 text-xs rounded-full bg-amber-500/20 text-amber-300 font-bold">0</span>
+                </button>
+
+                <!-- Theme Switcher -->
+                <button id="btnThemeToggle" type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs sm:text-sm font-medium bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition" title="Ganti Tema Tampilan">
+                    <span id="themeIcon">🌙</span>
+                    <span id="themeLabel" class="hidden sm:inline">Mode Malam</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
+
+        <!-- Control Panel / Input Card -->
+        <section class="rounded-2xl bg-slate-900/90 border border-slate-800 p-4 sm:p-6 shadow-xl relative overflow-hidden" id="controlPanel">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
+                
+                <!-- Left Column: Input Text & Quick Inspiration -->
+                <div class="lg:col-span-7 space-y-3">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <label for="inputText" class="text-sm font-semibold text-slate-300 flex items-center gap-1.5">
+                            <span>✍️ Ketik Kata, Nama, atau Status:</span>
+                        </label>
+                        <div class="flex items-center gap-2 text-xs text-slate-400">
+                            <span id="charCount">0 karakter</span>
+                            <span>•</span>
+                            <span id="wordCount">0 kata</span>
+                        </div>
+                    </div>
+
+                    <div class="relative">
+                        <input
+                            type="text"
+                            id="inputText"
+                            value="Pesulap Hebat"
+                            placeholder="Contoh: Pesulap Hebat, Selamat Pagi, Pro Player..."
+                            class="w-full px-4 py-3.5 pr-24 text-base sm:text-lg font-medium rounded-xl bg-slate-950 border-2 border-rose-500/70 focus:border-rose-400 focus:outline-none text-white placeholder-slate-500 shadow-inner transition"
+                        >
+                        <div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                            <button id="btnRandomText" type="button" class="px-2.5 py-1.5 rounded-lg bg-purple-600/20 hover:bg-purple-600/40 text-purple-300 text-xs font-semibold border border-purple-500/30 transition" title="Contoh Teks Acak">
+                                🎲 Acak
+                            </button>
+                            <button id="btnClearText" type="button" class="px-2 py-1.5 rounded-lg bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-300 text-xs font-semibold transition" title="Hapus Teks">
+                                ✕
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Preset Chips for All Audiences -->
+                    <div class="flex items-center gap-1.5 flex-wrap pt-1">
+                        <span class="text-xs text-slate-400 mr-1">Ide Cepat:</span>
+                        <button type="button" data-sample="Pesulap Hebat" class="sample-chip text-xs px-2.5 py-1 rounded-full bg-slate-800 hover:bg-rose-500/20 hover:text-rose-300 text-slate-300 border border-slate-700 transition">🪄 Pesulap Hebat</button>
+                        <button type="button" data-sample="Semangat Belajar!" class="sample-chip text-xs px-2.5 py-1 rounded-full bg-slate-800 hover:bg-rose-500/20 hover:text-rose-300 text-slate-300 border border-slate-700 transition">📚 Pelajar</button>
+                        <button type="button" data-sample="Shadow King 99" class="sample-chip text-xs px-2.5 py-1 rounded-full bg-slate-800 hover:bg-rose-500/20 hover:text-rose-300 text-slate-300 border border-slate-700 transition">🎮 Nickname Game</button>
+                        <button type="button" data-sample="Senja & Kopi" class="sample-chip text-xs px-2.5 py-1 rounded-full bg-slate-800 hover:bg-rose-500/20 hover:text-rose-300 text-slate-300 border border-slate-700 transition">☕ Bio Estetik</button>
+                        <button type="button" data-sample="Promo Spesial Hari Ini" class="sample-chip text-xs px-2.5 py-1 rounded-full bg-slate-800 hover:bg-rose-500/20 hover:text-rose-300 text-slate-300 border border-slate-700 transition">🛍️ Bisnis / Toko</button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Customization (Decorators & Effects) -->
+                <div class="lg:col-span-5 bg-slate-950/70 rounded-xl p-4 border border-slate-800/90 space-y-3.5">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xs font-bold uppercase tracking-wider text-amber-400 flex items-center gap-1.5">
+                            <span>✨ Pengaturan Bingkai & Efek</span>
+                        </h2>
+                        <button id="btnResetOptions" type="button" class="text-xs text-slate-400 hover:text-rose-400 underline transition">
+                            Reset
+                        </button>
+                    </div>
+
+                    <!-- Frame / Decorator Selector -->
+                    <div class="space-y-1">
+                        <label for="frameSelect" class="block text-xs text-slate-400">Bingkai Ornamen / Emoji:</label>
+                        <select id="frameSelect" class="w-full px-3 py-2 rounded-lg bg-slate-900 border border-slate-700 text-xs sm:text-sm text-slate-200 focus:outline-none focus:border-rose-500">
+                            <option value="auto">🪄 Otomatis Sesuai Tema (Bawaan)</option>
+                            <option value="none">🚫 Tanpa Bingkai (Teks Murni)</option>
+                            <option value="🔮✨ | ✨🔮">🔮✨ Bola Kristal Sulap ✨🔮</option>
+                            <option value="🌟🕊️ | 🕊️🌟">🌟🕊️ Merpati & Bintang 🕊️🌟</option>
+                            <option value="🎩🎭 | 🎭🎩">🎩🎭 Topi Pesulap & Topeng 🎭🎩</option>
+                            <option value="༺ | ༻">༺ Ornamen Kerajaan Klasik ༻</option>
+                            <option value="꧁༺ | ༻꧂">꧁༺ Sayap Naga Gamer ༻꧂</option>
+                            <option value="✿•° | °•✿">✿•° Bunga Estetik Imut °•✿</option>
+                            <option value="⚡🔥 | 🔥⚡">⚡🔥 Energi Api & Petir 🔥⚡</option>
+                            <option value="『 | 』">『 Kurung Sudut Jepang 』</option>
+                            <option value="★·.·´¯`·.·★ | ★·.·´¯`·.·★">★·.·´¯`·.·★ Pita Bintang Retro ★</option>
+                            <option value="👑💎 | 💎👑">👑💎 Mahkota Sultan 💎👑</option>
+                        </select>
+                    </div>
+
+                    <!-- Extra Modifier Toggles & Glitch Intensity -->
+                    <div class="grid grid-cols-2 gap-3 pt-1">
+                        <div>
+                            <label for="glitchRange" class="block text-xs text-slate-400 mb-1">
+                                Level Ilusi / Glitch: <span id="glitchLevelVal" class="font-bold text-rose-400">Ringan</span>
+                            </label>
+                            <input id="glitchRange" type="range" min="1" max="3" value="1" class="w-full accent-rose-500 cursor-pointer">
+                        </div>
+                        <div class="flex flex-col justify-end space-y-1.5">
+                            <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300 select-none">
+                                <input type="checkbox" id="chkSparkleSpace" class="rounded accent-rose-500 w-3.5 h-3.5">
+                                <span>Sisipkan ✨ antar kata</span>
+                            </label>
+                            <label class="inline-flex items-center gap-2 cursor-pointer text-xs text-slate-300 select-none">
+                                <input type="checkbox" id="chkUpper" class="rounded accent-rose-500 w-3.5 h-3.5">
+                                <span>Paksa HURUF BESAR</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Category Tabs & Search Filter -->
+        <section class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+            <!-- Category Pills -->
+            <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0" id="categoryTabs">
+                <button type="button" data-cat="all" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-rose-600 text-white shadow-md shadow-rose-600/20 whitespace-nowrap transition">
+                    🌟 Semua (<span id="countAll">0</span>)
+                </button>
+                <button type="button" data-cat="sulap" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 whitespace-nowrap transition">
+                    🪄 Sulap & Klasik
+                </button>
+                <button type="button" data-cat="elegan" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 whitespace-nowrap transition">
+                    🕊️ Elegan & Sosmed
+                </button>
+                <button type="button" data-cat="gamer" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 whitespace-nowrap transition">
+                    🎮 Gamer & Keren
+                </button>
+                <button type="button" data-cat="lucu" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 whitespace-nowrap transition">
+                    🎈 Lucu & Dekoratif
+                </button>
+                <button type="button" data-cat="unik" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 whitespace-nowrap transition">
+                    🔐 Sandi & Eksperimen
+                </button>
+                <button type="button" data-cat="fav" class="cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-amber-400 border border-slate-800 whitespace-nowrap transition">
+                    ⭐ Favorit Saya
+                </button>
+            </div>
+
+            <!-- Search Style Box -->
+            <div class="relative min-w-[210px]">
+                <input
+                    type="text"
+                    id="searchStyleInput"
+                    placeholder="🔍 Cari nama gaya font..."
+                    class="w-full px-3.5 py-2 rounded-xl bg-slate-900 border border-slate-800 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-rose-500"
+                >
+            </div>
+        </section>
+
+        <!-- Cards Grid -->
+        <section>
+            <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <!-- Dynamic Cards Injected by JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden rounded-2xl bg-slate-900/60 border border-slate-800 p-10 text-center space-y-3">
+                <div class="text-4xl">🔍✨</div>
+                <h3 class="text-base font-bold text-slate-200">Tidak ada gaya huruf yang cocok</h3>
+                <p class="text-xs sm:text-sm text-slate-400 max-w-md mx-auto">Coba pilih kategori <span class="text-rose-400 font-semibold">Semua</span> atau kosongkan kolom pencarian gaya.</p>
+                <button id="btnResetFilter" type="button" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold transition">
+                    Tampilkan Semua Gaya
+                </button>
+            </div>
+        </section>
+
+        <!-- Interactive Magic Name Card / Social Bio Preview & History -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-5 pt-2">
+            <!-- Live Social / Magic Card Preview -->
+            <div class="lg:col-span-7 rounded-2xl bg-gradient-to-br from-slate-900 via-indigo-950/60 to-slate-900 border border-slate-800 p-5 space-y-4">
+                <div class="flex items-center justify-between flex-wrap gap-2">
+                    <div>
+                        <h3 class="text-sm font-bold text-amber-400 flex items-center gap-1.5">
+                            <span>🪪 Pratinjau Kartu Profil & Bio Sosial Media</span>
+                        </h3>
+                        <p class="text-xs text-slate-400">Klik tombol "Pakai di Kartu" pada salah satu gaya di atas untuk mencoba tampilannya.</p>
+                    </div>
+                    <button id="btnCopyBioCard" type="button" class="px-3 py-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition">
+                        Salin Bio Lengkap
+                    </button>
+                </div>
+
+                <div class="rounded-xl bg-slate-950/80 border border-slate-800/90 p-4 flex flex-col sm:flex-row items-center gap-4">
+                    <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 via-purple-500 to-amber-400 flex items-center justify-center text-3xl shadow-lg shrink-0" id="previewAvatar">
+                        🧙‍♂️
+                    </div>
+                    <div class="flex-1 text-center sm:text-left space-y-1 overflow-hidden w-full">
+                        <div class="text-xs text-rose-400 font-semibold uppercase tracking-wider" id="previewStyleName">Gaya: Sulap Misterius (Gothic)</div>
+                        <div class="text-lg sm:text-xl font-bold text-white break-words" id="previewCardTitle">🔮✨ 𝕻𝖊𝖘𝖚𝖑𝖆𝖕 𝕳𝖊𝖇𝖆𝖙 ✨🔮</div>
+                        <p class="text-xs text-slate-400" id="previewCardBio">✨ Menciptakan keajaiban setiap hari • Kreator & Penjelajah Imajinasi 🌟</p>
+                    </div>
+                    <div class="flex sm:flex-col gap-1.5 shrink-0">
+                        <button type="button" data-avatar="🧙‍♂️" class="avatar-btn p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sm" title="Penyihir">🧙‍♂️</button>
+                        <button type="button" data-avatar="🎮" class="avatar-btn p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sm" title="Gamer">🎮</button>
+                        <button type="button" data-avatar="🌸" class="avatar-btn p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sm" title="Estetik">🌸</button>
+                        <button type="button" data-avatar="👑" class="avatar-btn p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sm" title="Sultan">👑</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copy History Panel -->
+            <div class="lg:col-span-5 rounded-2xl bg-slate-900/90 border border-slate-800 p-5 flex flex-col justify-between space-y-3">
+                <div class="flex items-center justify-between">
+                    <h3 class="text-sm font-bold text-slate-200 flex items-center gap-1.5">
+                        <span>📋 Riwayat Tersalin Terakhir</span>
+                    </h3>
+                    <button id="btnClearHistory" type="button" class="text-xs text-slate-400 hover:text-rose-400 transition">
+                        Bersihkan
+                    </button>
+                </div>
+                <div id="historyList" class="space-y-2 max-h-40 overflow-y-auto pr-1 text-xs">
+                    <div class="text-slate-500 italic py-4 text-center">Belum ada teks yang disalin. Klik tombol "Salin" pada kartu mana saja!</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 pointer-events-none transform translate-y-12 opacity-0 transition-all duration-300">
+        <div class="bg-slate-900 border-2 border-emerald-500/80 text-white px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 max-w-sm">
+            <span class="w-7 h-7 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-sm shrink-0">✓</span>
+            <div class="overflow-hidden">
+                <div class="text-xs font-bold text-emerald-400">Berhasil Disalin ke Clipboard!</div>
+                <div id="toastTextPreview" class="text-xs text-slate-300 truncate mt-0.5"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800/80 py-5 mt-8 text-center text-xs text-slate-500">
+        <p>🪄 Generator Teks Sulap Pro • Mendukung Unicode Standar untuk WhatsApp, Instagram, TikTok, Discord & Game</p>
+    </footer>
+
+    <script>
+        // ==========================================
+        // 1. KAMUS HURUF & TRANSFORMASI UNICODE
+        // ==========================================
+        const normalChars = Array.from("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+
+        const maps = {
+            // 1. Gothic / Fraktur Bold (Tema 1 Asli + Angka)
+            gothicBold: Array.from("𝖆𝖇𝖈𝖉𝖊𝖋𝖌𝖍𝖎𝖏𝖐𝖑𝖒𝖓𝖔𝖕𝖖𝖗𝖘𝖙𝖚𝖛𝖜𝖝𝖞𝖟𝕬𝕭𝕮𝕯𝕰𝕱𝕲𝕳𝕴𝕵𝕶𝕷𝕸𝕹𝕺𝕻𝕼𝕽𝕾𝕿𝖀𝖁𝖂𝖃𝖄𝖅𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗"),
+            // 2. Gothic Classic / Fraktur Regular
+            gothicReg: Array.from("𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ0123456789"),
+            // 3. Elegan Script (Tema 2 Asli)
+            scriptReg: Array.from("𝒶𝒷𝒸𝒹𝑒𝒻𝑔𝒽𝒾𝒿𝓀𝓁𝓂𝓃𝑜𝓅𝓆𝓇𝓈𝓉𝓊𝓋𝓌𝓍𝓎𝓏𝒜ℬ𝒞𝒟ℰℱ𝒢ℋℐ𝒥𝒦ℒℳ𝒩𝒪𝒫𝒬ℛ𝒮𝒯𝒰𝒱𝒲𝒳𝒴𝒵0123456789"),
+            // 4. Royal Bold Script (Kaligrafi Tebal)
+            scriptBold: Array.from("𝓪𝓫𝓬𝓭𝓮𝓯𝓰𝓱𝓲𝓳𝓴𝓵𝓶𝓷𝓸𝓹𝓺𝓻𝓼𝓽𝓾𝓿𝔀𝔁𝔂𝔃𝓐𝓑𝓒𝓓𝓔𝓕𝓖𝓗𝓘𝓙𝓚𝓛𝓜𝓝𝓞𝓟𝓠𝓡𝓢𝓣𝓤𝓥𝓦𝓧𝓨𝓩𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗"),
+            // 5. Double Struck / Papan Tulis Akademia
+            doubleStruck: Array.from("𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡"),
+            // 6. Serif Bold (Tegas & Formal)
+            serifBold: Array.from("𝐚𝐛𝐜𝐝𝐞𝐟𝐠𝐡𝐢𝐣𝐤𝐥𝐦𝐧𝐨𝐩𝐪𝐫𝐬𝐭𝐮𝐯𝐰𝐱𝐲𝐳𝐀𝐁𝐂𝐃𝐄𝐅𝐆𝐇𝐈𝐉𝐊𝐋𝐌𝐍𝐎𝐏𝐐𝐑𝐒𝐓𝐔𝐕𝐖𝐗𝐘𝐙𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗"),
+            // 7. Serif Italic (Sastra Klasik)
+            serifItalic: Array.from("𝑎𝑏𝑐𝑑𝑒𝑓𝑔ℎ𝑖𝑗𝑘𝑙𝑚𝑛𝑜𝑝𝑞𝑟𝑠𝑡𝑢𝑣𝑤𝑥𝑦𝑧𝐴𝐵𝐶𝐷𝐸𝐹𝐺𝐻𝐼𝐽𝐾𝐿𝑀𝑁𝑂𝑃𝑄𝑅𝑆𝑇𝑈𝑉𝑊𝑋𝑌𝑍0123456789"),
+            // 8. Serif Bold Italic
+            serifBoldItalic: Array.from("𝒂𝒃𝒄𝒅𝒆𝒇𝒈𝒉𝒊𝒋𝒌𝒍𝒎𝒏𝒐𝒑𝒒𝒓𝒔𝒕𝒖𝒗𝒘𝒙𝒚𝒛𝑨𝑩𝑪𝑫𝑬𝑭𝑮𝑯𝑰𝑱𝑲𝑳𝑴𝑵𝑶𝑷𝑸𝑹𝑺𝑻𝑼𝑽𝑾𝑿𝒀𝒁𝟎𝟏𝟐𝟑𝟒𝟓𝟔𝟕𝟖𝟗"),
+            // 9. Sans Bold (Modern Sosmed)
+            sansBold: Array.from("𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵"),
+            // 10. Sans Italic
+            sansItalic: Array.from("𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡0123456789"),
+            // 11. Sans Bold Italic
+            sansBoldItalic: Array.from("𝙖𝙗𝙘𝙙𝙚𝙛𝙜𝙝𝙞𝙟𝙠𝙡𝙢𝙣𝙤𝙥𝙦𝙧𝙨𝙩𝙪𝙫𝙬𝙭𝙮𝙯𝘼𝘽𝘾𝘿𝙀𝙁𝙂𝙃𝙄𝙅𝙆𝙇𝙈𝙉𝙊𝙋𝙌𝙍𝙎𝙏𝙐𝙑𝙒𝙓𝙔𝙕𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵"),
+            // 12. Monospace / Cyber Hacker
+            monospace: Array.from("𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿"),
+            // 13. Small Caps (Kapital Mungil)
+            smallCaps: Array.from("ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"),
+            // 14. Circled Bubble Putih
+            bubbleLight: Array.from("ⓐⓑⓒⓓⓔⓕⓖⓗⓘⓙⓚⓛⓜⓝⓞⓟⓠⓡⓢⓣⓤⓥⓦⓧⓨⓩⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ⓪①②③④⑤⑥⑦⑧⑨"),
+            // 15. Circled Bubble Hitam (Negatif)
+            bubbleDark: Array.from("🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩⓿❶❷❸❹❺❻❼❽❾"),
+            // 16. Squared Outline (Kotak Tipis)
+            squareLight: Array.from("🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉🄰🄱🄲🄳🄴🄵🄶🄷🄸🄹🄺🄻🄼🄽🄾🄿🅀🅁🅂🅃🅄🅅🅆🅇🅈🅉0123456789"),
+            // 17. Squared Solid (Balok Game)
+            squareDark: Array.from("🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉🅰🅱🅲🅳🅴🅵🅶🅷🅸🅹🅺🅻🅼🅽🅾🅿🆀🆁🆂🆃🆄🆅🆆🆇🆈🆉0123456789"),
+            // 18. Fullwidth Vaporwave Estetik
+            fullwidth: Array.from("ａｂｃｄｅｆｇｈｉｊｋｌｍｎｏｐｑｒｓｔｕｖｗｘｙｚＡＢＣＤＥＦＧＨＩＪＫＬＭＮＯＰＱＲＳＴＵＶＷＸＹＺ０１２３４５６７８９"),
+            // 19. Curvy / Sihir Peri (Fancy Currency/Symbol Mix)
+            fairyFancy: Array.from("äḅċḋëƒġḧïjklmnöpqrstüvwxÿżÄḄĊḊËƑĠḦÏJKLMNÖPQRSTÜVWXŸŻ0123456789"),
+            // 20. Runic / Mantra Kuno
+            ancientRune: Array.from("卂乃匚ᗪ乇千Ꮆ卄丨ﾌҜㄥ爪几ㄖ卩Ɋ尺丂ㄒㄩ𝕍山乂ㄚ乙卂乃匚ᗪ乇千Ꮆ卄丨ﾌҜㄥ爪几ㄖ卩Ɋ尺丂ㄒㄩ𝕍山乂ㄚ乙0123456789"),
+            // 21. Superscript (Huruf Kecil Melayang)
+            superscript: Array.from("ᵃᵇᶜᵈᵉᶠᵍʰⁱʲᵏˡᵐⁿᵒᵖqʳˢᵗᵘᵛʷˣʸᶻᴬᴮᶜᴰᴱᶠᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾQᴿˢᵀᵁⱽᵂˣʸᶻ⁰¹²³⁴⁵⁶⁷⁸⁹"),
+            // 22. Parenthesized (Kurung Bulat)
+            parenthesized: Array.from("⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵⒜⒝⒞⒟⒠⒡⒢⒣⒤⒥⒦⒧⒨⒩⒪⒫⒬⒭⒮⒯⒰⒱⒲⒳⒴⒵0⑴⑵⑶⑷⑸⑹⑺⑻⑼")
+        };
+
+        // Tabel huruf terbalik (Upside Down)
+        const flipTable = {
+            'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ',
+            'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd',
+            'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x',
+            'y': 'ʎ', 'z': 'z',
+            'A': '∀', 'B': 'ᗺ', 'C': 'Ɔ', 'D': 'ᗡ', 'E': 'Ǝ', 'F': 'Ⅎ', 'G': '⅁', 'H': 'H',
+            'I': 'I', 'J': 'ſ', 'K': 'ʞ', 'L': '˥', 'M': 'W', 'N': 'N', 'O': 'O', 'P': 'Ԁ',
+            'Q': 'Ό', 'R': 'ᴚ', 'S': 'S', 'T': '⊥', 'U': '∩', 'V': 'Λ', 'W': 'M', 'X': 'X',
+            'Y': '⅄', 'Z': 'Z',
+            '1': 'Ɩ', '2': 'ᄅ', '3': 'Ɛ', '4': 'ㄣ', '5': 'ϛ', '6': '9', '7': 'ㄥ', '8': '8', '9': '6', '0': '0',
+            '?': '¿', '!': '¡', '.': '˙'
+        };
+
+        // Tabel Sandi Morse
+        const morseTable = {
+            'a': '.-', 'b': '-...', 'c': '-.-.', 'd': '-..', 'e': '.', 'f': '..-.', 'g': '--.', 'h': '....',
+            'i': '..', 'j': '.---', 'k': '-.-', 'l': '.-..', 'm': '--', 'n': '-.', 'o': '---', 'p': '.--.',
+            'q': '--.-', 'r': '.-.', 's': '...', 't': '-', 'u': '..-', 'v': '...-', 'w': '.--', 'x': '-..-',
+            'y': '-.--', 'z': '--..',
+            '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+            '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.', ' ': '/'
+        };
+
+        // Fungsi konversi peta karakter dasar
+        function konversiFont(teks, fontTujuan) {
+            let hasil = "";
+            for (let char of Array.from(teks)) {
+                let index = normalChars.indexOf(char);
+                if (index !== -1 && fontTujuan[index]) {
+                    hasil += fontTujuan[index];
+                } else {
+                    hasil += char;
+                }
+            }
+            return hasil;
+        }
+
+        // Fungsi Glitch / Zalgo dengan level intensitas
+        function buatGlitch(teks, level) {
+            const marksRingan = ['\u0337']; // Coret miring asli
+            const marksSedang = ['\u0337', '\u0305', '\u0332', '\u0311'];
+            const marksEkstrem = ['\u0337', '\u0305', '\u0332', '\u030d', '\u030e', '\u0327', '\u0328', '\u0336'];
+            return Array.from(teks).map((huruf, idx) => {
+                if (huruf === ' ') return ' ';
+                if (level === 1) return huruf + marksRingan[0];
+                if (level === 2) return huruf + marksSedang[idx % marksSedang.length] + '\u0337';
+                return huruf + marksEkstrem[idx % marksEkstrem.length] + marksSedang[(idx + 1) % marksSedang.length] + '\u0337';
+            }).join('');
+        }
+
+        // Fungsi Efek Garis Bawah / Coret / Gelombang
+        function tambahCombining(teks, kodeUnicode) {
+            return Array.from(teks).map(c => c === ' ' ? ' ' : c + kodeUnicode).join('');
+        }
+
+        // Fungsi Teks Terbalik (Upside Down)
+        function balikTeks(teks) {
+            return Array.from(teks).reverse().map(c => flipTable[c] || c).join('');
+        }
+
+        // ==========================================
+        // 2. DAFTAR 30 VARIAN GAYA UNTUK SEMUA KALANGAN
+        // ==========================================
+        const styleCatalog = [
+            // --- 3 TEMA UTAMA DARI VERSI AWAL (DIPERTAHANKAN & DISEMPURNAKAN) ---
+            {
+                id: 'out1',
+                name: '1. Sulap Misterius (Gothic Bold)',
+                category: 'sulap',
+                badge: 'Klasik Favorit',
+                defaultFrame: ['🔮✨ ', ' ✨🔮'],
+                transform: (t) => konversiFont(t, maps.gothicBold)
+            },
+            {
+                id: 'out2',
+                name: '2. Sihir Berkilau (Script Elegan)',
+                category: 'elegan',
+                badge: 'Klasik Favorit',
+                defaultFrame: ['🌟🕊️ ', ' 🕊️🌟'],
+                transform: (t) => konversiFont(t, maps.scriptReg)
+            },
+            {
+                id: 'out3',
+                name: '3. Ilusi Coret (Glitch / Zalgo)',
+                category: 'sulap',
+                badge: 'Efek Dinamis',
+                defaultFrame: ['🎩🎭 ', ' 🎭🎩'],
+                transform: (t, opts) => buatGlitch(t, opts.glitchLevel)
+            },
+
+            // --- KATEGORI: SULAP & KLASIK ---
+            {
+                id: 'out4',
+                name: '4. Kitab Penyihir Kuno (Fraktur)',
+                category: 'sulap',
+                badge: 'Misteri',
+                defaultFrame: ['📜🕯️ ', ' 🕯️📜'],
+                transform: (t) => konversiFont(t, maps.gothicReg)
+            },
+            {
+                id: 'out5',
+                name: '5. Alkimia & Akademia (Double Struck)',
+                category: 'sulap',
+                badge: 'Akademik',
+                defaultFrame: ['⚗️✨ ', ' ✨⚗️'],
+                transform: (t) => konversiFont(t, maps.doubleStruck)
+            },
+            {
+                id: 'out6',
+                name: '6. Mantra Rune Kuno (Asian-Rune)',
+                category: 'sulap',
+                badge: 'Legenda',
+                defaultFrame: ['🐉🔥 ', ' 🔥🐉'],
+                transform: (t) => konversiFont(t, maps.ancientRune)
+            },
+            {
+                id: 'out7',
+                name: '7. Cermin Dunia Terbalik (Upside Down)',
+                category: 'sulap',
+                badge: 'Ilusi Optik',
+                defaultFrame: ['🙃🔮 ', ' 🔮🙃'],
+                transform: (t) => balikTeks(t)
+            },
+
+            // --- KATEGORI: ELEGAN & SOSIAL MEDIA ---
+            {
+                id: 'out8',
+                name: '8. Kaligrafi Kerajaan (Bold Script)',
+                category: 'elegan',
+                badge: 'Undangan & Bio',
+                defaultFrame: ['👑✨ ', ' ✨👑'],
+                transform: (t) => konversiFont(t, maps.scriptBold)
+            },
+            {
+                id: 'out9',
+                name: '9. Sastra Klasik (Serif Italic)',
+                category: 'elegan',
+                badge: 'Puitis',
+                defaultFrame: ['🥀📖 ', ' 📖🥀'],
+                transform: (t) => konversiFont(t, maps.serifItalic)
+            },
+            {
+                id: 'out10',
+                name: '10. Tajuk Utama Tegas (Serif Bold)',
+                category: 'elegan',
+                badge: 'Profesional',
+                defaultFrame: ['🏛️✨ ', ' ✨🏛️'],
+                transform: (t) => konversiFont(t, maps.serifBold)
+            },
+            {
+                id: 'out11',
+                name: '11. Bangsawan Eropa (Serif Bold Italic)',
+                category: 'elegan',
+                badge: 'Mewah',
+                defaultFrame: ['⚜️ ', ' ⚜️'],
+                transform: (t) => konversiFont(t, maps.serifBoldItalic)
+            },
+            {
+                id: 'out12',
+                name: '12. Status Modern Tebal (Sans Bold)',
+                category: 'elegan',
+                badge: 'WA & IG',
+                defaultFrame: ['💬✨ ', ' ✨💬'],
+                transform: (t) => konversiFont(t, maps.sansBold)
+            },
+            {
+                id: 'out13',
+                name: '13. Estetik Minimalis (Small Caps)',
+                category: 'elegan',
+                badge: 'Populer',
+                defaultFrame: ['🌿 ', ' 🌿'],
+                transform: (t) => konversiFont(t, maps.smallCaps)
+            },
+            {
+                id: 'out14',
+                name: '14. Vaporwave Spasi Lebar (Fullwidth)',
+                category: 'elegan',
+                badge: 'Senja & Retro',
+                defaultFrame: ['🌅 ', ' 🌅'],
+                transform: (t) => konversiFont(t, maps.fullwidth)
+            },
+
+            // --- KATEGORI: GAMER & KEREN ---
+            {
+                id: 'out15',
+                name: '15. Nickname Pro Player (Sayap Naga)',
+                category: 'gamer',
+                badge: 'Esports',
+                defaultFrame: ['꧁༺ ', ' ༻꧂'],
+                transform: (t) => konversiFont(t, maps.gothicBold)
+            },
+            {
+                id: 'out16',
+                name: '16. Cyber Hacker (Monospace)',
+                category: 'gamer',
+                badge: 'Sci-Fi',
+                defaultFrame: ['💻⚡ ', ' ⚡💻'],
+                transform: (t) => konversiFont(t, maps.monospace)
+            },
+            {
+                id: 'out17',
+                name: '17. Balok Arcade Solid (Squared Dark)',
+                category: 'gamer',
+                badge: 'Bold',
+                defaultFrame: ['🎮🔥 ', ' 🔥🎮'],
+                transform: (t) => konversiFont(t, maps.squareDark)
+            },
+            {
+                id: 'out18',
+                name: '18. Sniper Miras (Sans Bold Italic)',
+                category: 'gamer',
+                badge: 'Cepat',
+                defaultFrame: ['⚔️⚡ ', ' ⚡⚔️'],
+                transform: (t) => konversiFont(t, maps.sansBoldItalic)
+            },
+            {
+                id: 'out19',
+                name: '19. Klan Jepang (Kurung Sudut)',
+                category: 'gamer',
+                badge: 'Anime',
+                defaultFrame: ['『 ', ' 』'],
+                transform: (t) => konversiFont(t, maps.smallCaps)
+            },
+            {
+                id: 'out20',
+                name: '20. Petir Garis Kilat (Thunder Strike)',
+                category: 'gamer',
+                badge: 'Action',
+                defaultFrame: ['⚡🗡️ ', ' 🗡️⚡'],
+                transform: (t) => tambahCombining(konversiFont(t, maps.sansBold), '\u0336')
+            },
+
+            // --- KATEGORI: LUCU & DEKORATIF (ANAK & REMAJA) ---
+            {
+                id: 'out21',
+                name: '21. Gelembung Sabun (Bubble Putih)',
+                category: 'lucu',
+                badge: 'Imut',
+                defaultFrame: ['🫧🐰 ', ' 🐰🫧'],
+                transform: (t) => konversiFont(t, maps.bubbleLight)
+            },
+            {
+                id: 'out22',
+                name: '22. Bola Permen Hitam (Bubble Solid)',
+                category: 'lucu',
+                badge: 'Kontras',
+                defaultFrame: ['🍭🌟 ', ' 🌟🍭'],
+                transform: (t) => konversiFont(t, maps.bubbleDark)
+            },
+            {
+                id: 'out23',
+                name: '23. Balok Susun Anak (Squared Light)',
+                category: 'lucu',
+                badge: 'Edukasi',
+                defaultFrame: ['🧸🎈 ', ' 🎈🧸'],
+                transform: (t) => konversiFont(t, maps.squareLight)
+            },
+            {
+                id: 'out24',
+                name: '24. Peri Hutan Ajaib (Fairy Dots)',
+                category: 'lucu',
+                badge: 'Fantasi',
+                defaultFrame: ['🧚‍♀️🌸 ', ' 🌸🧚‍♀️'],
+                transform: (t) => konversiFont(t, maps.fairyFancy)
+            },
+            {
+                id: 'out25',
+                name: '25. Bisikan Mungil (Superscript)',
+                category: 'lucu',
+                badge: 'Mini',
+                defaultFrame: ['☁️✨ ', ' ✨☁️'],
+                transform: (t) => konversiFont(t, maps.superscript)
+            },
+            {
+                id: 'out26',
+                name: '26. Kapsul Kurung (Parenthesized)',
+                category: 'lucu',
+                badge: 'Unik',
+                defaultFrame: ['🎀 ', ' 🎀'],
+                transform: (t) => konversiFont(t, maps.parenthesized)
+            },
+
+            // --- KATEGORI: SANDI & EKSPERIMEN ---
+            {
+                id: 'out27',
+                name: '27. Garis Bawah Ganda (Double Underline)',
+                category: 'unik',
+                badge: 'Penekanan',
+                defaultFrame: ['📌 ', ' 📌'],
+                transform: (t) => tambahCombining(konversiFont(t, maps.sansBold), '\u0333')
+            },
+            {
+                id: 'out28',
+                name: '28. Sayap Camar Atas (Seagull Bridge)',
+                category: 'unik',
+                badge: 'Dekorasi',
+                defaultFrame: ['🌊🕊️ ', ' 🕊️🌊'],
+                transform: (t) => tambahCombining(t, '\u0346')
+            },
+            {
+                id: 'out29',
+                name: '29. Tepuk Bintang Antar Huruf',
+                category: 'unik',
+                badge: 'Meriah',
+                defaultFrame: ['🎉 ', ' 🎉'],
+                transform: (t) => Array.from(t.trim()).join('✦')
+            },
+            {
+                id: 'out30',
+                name: '30. Sandi Detektif Morse',
+                category: 'unik',
+                badge: 'Kode Rahasia',
+                defaultFrame: ['🕵️‍♂️🔍 ', ' 🔍🕵️‍♂️'],
+                transform: (t) => Array.from(t.toLowerCase()).map(c => morseTable[c] || c).join(' ')
+            }
+        ];
+
+        const randomSamples = [
+            "Pesulap Hebat",
+            "Abrakadabra Simsalabim",
+            "Raja Ilusi Nusantara",
+            "Semangat Pagi Indonesia",
+            "Jangan Lupa Bahagia",
+            "Shadow Caster 77",
+            "Kopi Senja & Cerita",
+            "Keluarga Bahagia Selalu",
+            "Bintang Kejora Malam",
+            "Juara Satu Turnamen"
+        ];
+
+        // ==========================================
+        // 3. STATE MANAGEMENT & LOCAL STORAGE SAFE
+        // ==========================================
+        let state = {
+            text: "Pesulap Hebat",
+            category: "all",
+            searchQuery: "",
+            frameMode: "auto",
+            glitchLevel: 1,
+            sparkleSpace: false,
+            forceUpper: false,
+            favorites: [],
+            history: [],
+            selectedCardId: "out1",
+            darkMode: true
+        };
+
+        function loadSavedState() {
+            try {
+                const savedFavs = localStorage.getItem("magicText_favorites");
+                if (savedFavs) state.favorites = JSON.parse(savedFavs);
+                const savedHist = localStorage.getItem("magicText_history");
+                if (savedHist) state.history = JSON.parse(savedHist);
+            } catch (e) {
+                // Ignore storage errors in sandboxed iframe
+            }
+        }
+
+        function saveFavorites() {
+            try {
+                localStorage.setItem("magicText_favorites", JSON.stringify(state.favorites));
+            } catch (e) {}
+        }
+
+        function saveHistory() {
+            try {
+                localStorage.setItem("magicText_history", JSON.stringify(state.history));
+            } catch (e) {}
+        }
+
+        // ==========================================
+        // 4. PEMROSESAN TEKS UTAMA
+        // ==========================================
+        function generateStyledText(styleItem) {
+            let raw = state.text;
+            if (raw.trim() === "") {
+                const [leftDef, rightDef] = getFramePair(styleItem);
+                return `${leftDef}...${rightDef}`;
+            }
+
+            if (state.forceUpper) {
+                raw = raw.toUpperCase();
+            }
+
+            let transformed = styleItem.transform(raw, { glitchLevel: state.glitchLevel });
+
+            if (state.sparkleSpace) {
+                transformed = transformed.replace(/\s+/g, " ✨ ");
+            }
+
+            const [prefix, suffix] = getFramePair(styleItem);
+            return `${prefix}${transformed}${suffix}`;
+        }
+
+        function getFramePair(styleItem) {
+            if (state.frameMode === "none") return ["", ""];
+            if (state.frameMode === "auto") return styleItem.defaultFrame;
+            const parts = state.frameMode.split("|");
+            return [parts[0] || "", parts[1] || ""];
+        }
+
+        // ==========================================
+        // 5. RENDER UI & KARTU
+        // ==========================================
+        function updateStats() {
+            const raw = state.text;
+            const chars = Array.from(raw).length;
+            const words = raw.trim() === "" ? 0 : raw.trim().split(/\s+/).length;
+            document.getElementById("charCount").innerText = `${chars} karakter`;
+            document.getElementById("wordCount").innerText = `${words} kata`;
+            document.getElementById("favCountBadge").innerText = state.favorites.length;
+            document.getElementById("countAll").innerText = styleCatalog.length;
+        }
+
+        function renderCards() {
+            updateStats();
+            const grid = document.getElementById("cardsGrid");
+            const emptyState = document.getElementById("emptyState");
+            const query = state.searchQuery.trim().toLowerCase();
+
+            const filtered = styleCatalog.filter(item => {
+                if (state.category === "fav" && !state.favorites.includes(item.id)) return false;
+                if (state.category !== "all" && state.category !== "fav" && item.category !== state.category) return false;
+                if (query && !item.name.toLowerCase().includes(query) && !item.badge.toLowerCase().includes(query)) return false;
+                return true;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "";
+                emptyState.classList.remove("hidden");
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+
+            const cardBg = state.darkMode
+                ? "bg-slate-900/90 border-slate-800 hover:border-rose-500/50 text-white"
+                : "bg-white border-slate-200 hover:border-rose-400 text-slate-900 shadow-sm";
+
+            grid.innerHTML = filtered.map(item => {
+                const resultText = generateStyledText(item);
+                const isFav = state.favorites.includes(item.id);
+                const isSelected = state.selectedCardId === item.id;
+
+                return `
+                <div class="card-hover rounded-2xl border p-4 flex flex-col justify-between gap-3 ${cardBg} ${isSelected ? 'ring-2 ring-rose-500/70' : ''}">
+                    <div class="flex items-start justify-between gap-2">
+                        <div>
+                            <span class="inline-block text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-md bg-rose-500/15 text-rose-400 mb-1">
+                                ${escapeHtml(item.badge)}
+                            </span>
+                            <h3 class="text-sm font-bold text-amber-400 leading-snug">${escapeHtml(item.name)}</h3>
+                        </div>
+                        <button
+                            type="button"
+                            data-action="fav"
+                            data-id="${item.id}"
+                            class="p-1.5 rounded-lg hover:bg-slate-800/60 transition text-base"
+                            title="${isFav ? 'Hapus dari Favorit' : 'Simpan ke Favorit'}"
+                        >
+                            ${isFav ? '⭐' : '☆'}
+                        </button>
+                    </div>
+
+                    <div
+                        id="${item.id}"
+                        class="output py-3 px-3 rounded-xl ${state.darkMode ? 'bg-slate-950/80 text-slate-100' : 'bg-slate-100 text-slate-900'} text-center text-base sm:text-lg font-medium break-words select-all min-h-[3.25rem] flex items-center justify-center"
+                    >${escapeHtml(resultText)}</div>
+
+                    <div class="flex items-center gap-2 pt-1">
+                        <button
+                            type="button"
+                            data-action="copy"
+                            data-id="${item.id}"
+                            class="flex-1 py-2 px-3 rounded-xl bg-rose-600 hover:bg-rose-500 active:scale-[0.99] text-white text-xs sm:text-sm font-bold transition flex items-center justify-center gap-1.5 shadow-sm shadow-rose-600/30"
+                        >
+                            <span>📋 Salin Teks</span>
+                        </button>
+                        <button
+                            type="button"
+                            data-action="preview"
+                            data-id="${item.id}"
+                            class="py-2 px-3 rounded-xl ${state.darkMode ? 'bg-slate-800 hover:bg-slate-700 text-slate-200' : 'bg-slate-200 hover:bg-slate-300 text-slate-800'} text-xs font-semibold transition"
+                            title="Pasang ke Kartu Profil di Bawah"
+                        >
+                            🪪 Pakai
+                        </button>
+                    </div>
+                </div>
+                `;
+            }).join('');
+
+            updatePreviewCard();
+        }
+
+        function updatePreviewCard() {
+            const chosen = styleCatalog.find(s => s.id === state.selectedCardId) || styleCatalog[0];
+            const styledTitle = generateStyledText(chosen);
+            document.getElementById("previewStyleName").innerText = `Gaya Aktif: ${chosen.name}`;
+            document.getElementById("previewCardTitle").innerText = styledTitle;
+        }
+
+        function renderHistory() {
+            const container = document.getElementById("historyList");
+            if (state.history.length === 0) {
+                container.innerHTML = `<div class="text-slate-500 italic py-4 text-center">Belum ada teks yang disalin. Klik tombol "Salin Teks" pada kartu mana saja!</div>`;
+                return;
+            }
+            container.innerHTML = state.history.map((entry, idx) => `
+                <div class="flex items-center justify-between gap-2 px-3 py-2 rounded-lg ${state.darkMode ? 'bg-slate-950 border border-slate-800' : 'bg-slate-100 border border-slate-200'}">
+                    <span class="truncate font-medium">${escapeHtml(entry)}</span>
+                    <button type="button" data-hist-idx="${idx}" class="hist-copy-btn text-rose-400 hover:text-rose-300 font-bold shrink-0 px-2 py-0.5 rounded bg-rose-500/10">
+                        Salin Lagi
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;");
+        }
+
+        // ==========================================
+        // 6. CLIPBOARD & TOAST NOTIFICATION
+        // ==========================================
+        let toastTimer = null;
+
+        function copyTextToClipboard(text, btnElement) {
+            const doSuccess = () => {
+                showToast(text);
+                if (!state.history.includes(text)) {
+                    state.history.unshift(text);
+                    if (state.history.length > 8) state.history.pop();
+                    saveHistory();
+                    renderHistory();
+                }
+                if (btnElement) {
+                    const origHtml = btnElement.innerHTML;
+                    btnElement.innerHTML = `<span>✓ Tersalin!</span>`;
+                    btnElement.classList.remove("bg-rose-600", "hover:bg-rose-500");
+                    btnElement.classList.add("bg-emerald-600");
+                    setTimeout(() => {
+                        btnElement.innerHTML = origHtml;
+                        btnElement.classList.remove("bg-emerald-600");
+                        btnElement.classList.add("bg-rose-600", "hover:bg-rose-500");
+                    }, 1200);
+                }
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(doSuccess).catch(() => {
+                    fallbackCopy(text, doSuccess);
+                });
+            } else {
+                fallbackCopy(text, doSuccess);
+            }
+        }
+
+        function fallbackCopy(text, callback) {
+            const ta = document.createElement("textarea");
+            ta.value = text;
+            ta.style.position = "fixed";
+            ta.style.opacity = "0";
+            document.body.appendChild(ta);
+            ta.select();
+            try {
+                document.execCommand("copy");
+                callback();
+            } catch (e) {}
+            document.body.removeChild(ta);
+        }
+
+        function showToast(copiedText) {
+            const toast = document.getElementById("toastContainer");
+            const preview = document.getElementById("toastTextPreview");
+            preview.innerText = copiedText;
+            toast.classList.remove("translate-y-12", "opacity-0");
+            toast.classList.add("translate-y-0", "opacity-100");
+
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove("translate-y-0", "opacity-100");
+                toast.classList.add("translate-y-12", "opacity-0");
+            }, 2400);
+        }
+
+        // ==========================================
+        // 7. THEME SWITCHER (DARK / LIGHT MODE)
+        // ==========================================
+        function applyTheme() {
+            const body = document.body;
+            const header = document.getElementById("mainHeader");
+            const controlPanel = document.getElementById("controlPanel");
+            const icon = document.getElementById("themeIcon");
+            const label = document.getElementById("themeLabel");
+
+            if (state.darkMode) {
+                body.className = "bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-rose-500 selection:text-white";
+                header.className = "sticky top-0 z-30 backdrop-blur-md bg-slate-900/80 border-b border-slate-800 transition-colors";
+                controlPanel.className = "rounded-2xl bg-slate-900/90 border border-slate-800 p-4 sm:p-6 shadow-xl relative overflow-hidden";
+                icon.innerText = "🌙";
+                label.innerText = "Mode Malam";
+            } else {
+                body.className = "bg-slate-50 text-slate-900 min-h-screen flex flex-col selection:bg-rose-500 selection:text-white";
+                header.className = "sticky top-0 z-30 backdrop-blur-md bg-white/90 border-b border-slate-200 transition-colors";
+                controlPanel.className = "rounded-2xl bg-slate-900 text-slate-100 border border-slate-800 p-4 sm:p-6 shadow-xl relative overflow-hidden";
+                icon.innerText = "☀️";
+                label.innerText = "Mode Terang";
+            }
+            renderCards();
+            renderHistory();
+        }
+
+        // ==========================================
+        // 8. EVENT LISTENERS & INITIALIZATION
+        // ==========================================
+        function setActiveCategoryTab(cat) {
+            state.category = cat;
+            document.querySelectorAll(".cat-btn").forEach(btn => {
+                const isMatch = btn.getAttribute("data-cat") === cat;
+                if (isMatch) {
+                    btn.className = "cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-rose-600 text-white shadow-md shadow-rose-600/20 whitespace-nowrap transition";
+                } else {
+                    btn.className = "cat-btn px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 whitespace-nowrap transition";
+                }
+            });
+            renderCards();
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            loadSavedState();
+            renderCards();
+            renderHistory();
+
+            // Input Teks Utama
+            const inputEl = document.getElementById("inputText");
+            inputEl.addEventListener("input", (e) => {
+                state.text = e.target.value;
+                renderCards();
+            });
+
+            // Tombol Acak
+            document.getElementById("btnRandomText").addEventListener("click", () => {
+                const candidates = randomSamples.filter(s => s !== state.text);
+                const pick = candidates[Math.floor(Math.random() * candidates.length)];
+                state.text = pick;
+                inputEl.value = pick;
+                renderCards();
+            });
+
+            // Tombol Clear Teks
+            document.getElementById("btnClearText").addEventListener("click", () => {
+                state.text = "";
+                inputEl.value = "";
+                inputEl.focus();
+                renderCards();
+            });
+
+            // Chip Ide Cepat
+            document.querySelectorAll(".sample-chip").forEach(chip => {
+                chip.addEventListener("click", () => {
+                    const sample = chip.getAttribute("data-sample");
+                    state.text = sample;
+                    inputEl.value = sample;
+                    renderCards();
+                });
+            });
+
+            // Dropdown Bingkai
+            const frameSelect = document.getElementById("frameSelect");
+            frameSelect.addEventListener("change", (e) => {
+                state.frameMode = e.target.value;
+                renderCards();
+            });
+
+            // Slider Glitch Level
+            const glitchRange = document.getElementById("glitchRange");
+            const glitchLabel = document.getElementById("glitchLevelVal");
+            const levelNames = { 1: "Ringan", 2: "Sedang", 3: "Ekstrem" };
+            glitchRange.addEventListener("input", (e) => {
+                state.glitchLevel = parseInt(e.target.value, 10) || 1;
+                glitchLabel.innerText = levelNames[state.glitchLevel];
+                renderCards();
+            });
+
+            // Checkbox Modifiers
+            const chkSparkle = document.getElementById("chkSparkleSpace");
+            chkSparkle.addEventListener("change", (e) => {
+                state.sparkleSpace = e.target.checked;
+                renderCards();
+            });
+
+            const chkUpper = document.getElementById("chkUpper");
+            chkUpper.addEventListener("change", (e) => {
+                state.forceUpper = e.target.checked;
+                renderCards();
+            });
+
+            // Reset Pengaturan Efek
+            document.getElementById("btnResetOptions").addEventListener("click", () => {
+                state.frameMode = "auto";
+                state.glitchLevel = 1;
+                state.sparkleSpace = false;
+                state.forceUpper = false;
+                frameSelect.value = "auto";
+                glitchRange.value = "1";
+                glitchLabel.innerText = "Ringan";
+                chkSparkle.checked = false;
+                chkUpper.checked = false;
+                renderCards();
+            });
+
+            // Kategori Tabs
+            document.querySelectorAll(".cat-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    setActiveCategoryTab(btn.getAttribute("data-cat"));
+                });
+            });
+
+            // Tombol Favorit di Header
+            document.getElementById("btnFilterFavTop").addEventListener("click", () => {
+                setActiveCategoryTab(state.category === "fav" ? "all" : "fav");
+            });
+
+            // Search Gaya Font
+            const searchInput = document.getElementById("searchStyleInput");
+            searchInput.addEventListener("input", (e) => {
+                state.searchQuery = e.target.value;
+                renderCards();
+            });
+
+            // Reset Filter saat Empty State
+            document.getElementById("btnResetFilter").addEventListener("click", () => {
+                state.searchQuery = "";
+                searchInput.value = "";
+                setActiveCategoryTab("all");
+            });
+
+            // Delegasi Klik pada Grid Kartu (Copy, Favorit, Pakai di Kartu)
+            document.getElementById("cardsGrid").addEventListener("click", (e) => {
+                const btn = e.target.closest("button[data-action]");
+                if (!btn) return;
+                const action = btn.getAttribute("data-action");
+                const id = btn.getAttribute("data-id");
+                const styleItem = styleCatalog.find(s => s.id === id);
+                if (!styleItem) return;
+
+                if (action === "copy") {
+                    const textToCopy = generateStyledText(styleItem);
+                    copyTextToClipboard(textToCopy, btn);
+                } else if (action === "fav") {
+                    const idx = state.favorites.indexOf(id);
+                    if (idx === -1) {
+                        state.favorites.push(id);
+                    } else {
+                        state.favorites.splice(idx, 1);
+                    }
+                    saveFavorites();
+                    renderCards();
+                } else if (action === "preview") {
+                    state.selectedCardId = id;
+                    renderCards();
+                }
+            });
+
+            // Avatar Switcher di Kartu Profil
+            document.querySelectorAll(".avatar-btn").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    document.getElementById("previewAvatar").innerText = btn.getAttribute("data-avatar");
+                });
+            });
+
+            // Salin Bio Lengkap
+            document.getElementById("btnCopyBioCard").addEventListener("click", (e) => {
+                const title = document.getElementById("previewCardTitle").innerText;
+                const bio = document.getElementById("previewCardBio").innerText;
+                copyTextToClipboard(`${title}\n${bio}`, e.currentTarget);
+            });
+
+            // Delegasi Klik Riwayat
+            document.getElementById("historyList").addEventListener("click", (e) => {
+                const btn = e.target.closest(".hist-copy-btn");
+                if (!btn) return;
+                const idx = parseInt(btn.getAttribute("data-hist-idx"), 10);
+                if (state.history[idx]) {
+                    copyTextToClipboard(state.history[idx], btn);
+                }
+            });
+
+            // Bersihkan Riwayat
+            document.getElementById("btnClearHistory").addEventListener("click", () => {
+                state.history = [];
+                saveHistory();
+                renderHistory();
+            });
+
+            // Toggle Tema Malam/Terang
+            document.getElementById("btnThemeToggle").addEventListener("click", () => {
+                state.darkMode = !state.darkMode;
+                applyTheme();
+            });
+        });
+    </script>
+</body>
+</html>
